@@ -1,7 +1,7 @@
 import RankedSVG from "../assets/ranked.svg";
 import DuelSVG from "../assets/duel.svg";
 import FunSVG from "../assets/fun.svg";
-import TrainingSVG from ".../assets/training.svg";
+import TrainingSVG from "../assets/training.svg";
 
 export const categories = [
   {
