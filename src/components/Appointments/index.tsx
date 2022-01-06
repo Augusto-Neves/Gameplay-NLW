@@ -5,11 +5,13 @@ import GuildIcon from "../GuildIcon";
 
 import { styles } from "./styles";
 import PlayerSVG from "../../assets/player.svg";
+import CalendarSVG from "../../assets/calendar.svg";
 import { theme } from "../../global/styles/theme";
 
 export type GuildProps = {
   id: number;
   name: string;
+  icon: null | string;
   owner: boolean;
 };
 export type AppointmentsProps = {
@@ -37,11 +39,18 @@ export default function Appointments({ data, onPress }: Props) {
             <Text style={styles.category}>{category.title}</Text>
           </View>
 
-          <View style={styles.playersInfo}>
-            <PlayerSVG fill={owner ? on : primary} />
-            <Text
-              style={[styles.players, { color: owner ? on : primary }]}
-            >{owner ? "Anfitrião" : "Visitante" }</Text>
+          <View style={styles.footer}>
+            <View style={styles.dateInfo}>
+              <CalendarSVG />
+              <Text style={styles.date}>{data.date}</Text>
+            </View>
+
+            <View style={styles.playersInfo}>
+              <PlayerSVG fill={owner ? on : primary} />
+              <Text style={[styles.player, { color: owner ? on : primary }]}>
+                {owner ? "Anfitrião" : "Visitante"}
+              </Text>
+            </View>
           </View>
         </View>
       </View>

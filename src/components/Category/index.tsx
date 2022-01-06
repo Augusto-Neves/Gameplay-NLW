@@ -9,6 +9,7 @@ import { styles } from "./styles";
 type Props = {
   title: string;
   icon: React.FC<SvgProps>;
+  hasCheckBox?: boolean;
   checked?: boolean;
   onPress?: () => void;
 };
@@ -17,20 +18,26 @@ export default function Category({
   title,
   icon: Icon,
   checked = false,
+  hasCheckBox = false,
   onPress,
 }: Props) {
-  const { secondary50, secondary70 } = theme.colors;
+  const { secondary40, secondary50, secondary70, secondary85 } = theme.colors;
   return (
     <LinearGradient
       style={styles.container}
       colors={[secondary50, secondary70]}
     >
       <TouchableOpacity onPress={onPress} activeOpacity={0.7}>
-        <View style={[styles.content, { opacity: checked ? 1 : 0.5  }]}>
-          <View style={checked ? styles.checked : styles.check} />
+        <LinearGradient
+          colors={[checked ? secondary85 : secondary50, secondary40]}
+          style={[styles.content, { opacity: checked ? 1 : 0.5 }]}
+        >
+          {hasCheckBox && (
+            <View style={checked ? styles.checked : styles.check} />
+          )}
           <Icon width={48} height={48} />
           <Text style={styles.title}>{title}</Text>
-        </View>
+        </LinearGradient>
       </TouchableOpacity>
     </LinearGradient>
   );

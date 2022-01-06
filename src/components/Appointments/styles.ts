@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    
   },
   header: {
     width: "100%",
@@ -31,4 +32,30 @@ export const styles = StyleSheet.create({
     color: theme.colors.highlight,
     fontSize: 13,
   },
+  footer: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 20,
+  },
+  dateInfo: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  date: {
+    fontFamily: theme.fonts.text500,
+    color: theme.colors.heading,
+    fontSize: 13,
+    marginLeft: 7,
+  },
+  playersInfo: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  player: {
+    fontFamily: theme.fonts.text500,
+    fontSize: 13,
+    marginLeft: 7,
+    marginRight: 24,
+  }
 });
