@@ -49,6 +49,18 @@ export default function Home() {
       date: "22/06 às 20:30h",
       description: " Descrição do evento, blá, blá, blá",
     },
+    {
+      id: 4,
+      guild: {
+        id: 4,
+        name: "Guild 4",
+        icon: null,
+        owner: true,
+      },
+      category: 3,
+      date: "22/06 às 21:30h",
+      description: " Descrição do evento, blá, blá, blá",
+    },
   ];
 
   function handleCategorySelected(categoryId: number) {
@@ -61,18 +73,23 @@ export default function Home() {
     );
   }
 
+  function handleAppointmentsCreate() {
+    navigation.dispatch(CommonActions.navigate({ name: "AppointmentsCreate" }));
+  }
+
   return (
     <Background>
       <View style={styles.container}>
         <View style={styles.header}>
           <Profile />
-          <ButtonAdd activeOpacity={0.7} />
+          <ButtonAdd activeOpacity={0.7} onPress={handleAppointmentsCreate} />
         </View>
 
         <CategorySelect
           categorySelected={category}
           setCategory={handleCategorySelected}
         />
+
         <View style={styles.content}>
           <ListHeader title="Partidas Agendas" subtitle="Total 6" />
           <FlatList

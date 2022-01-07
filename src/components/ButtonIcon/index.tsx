@@ -4,7 +4,7 @@ import DiscordImg from "../../assets/discord.png";
 
 type Props = {
   title: string;
-  onPress: () => void;
+  onPress?: () => void;
   activeOpacity?: number;
 };
 

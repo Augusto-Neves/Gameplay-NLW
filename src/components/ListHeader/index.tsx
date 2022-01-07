@@ -3,7 +3,7 @@ import { styles } from "./styles";
 
 type Props = {
   title: string;
-  subtitle: string;
+  subtitle?: string;
 };
 
 export default function ListHeader({ title, subtitle }: Props) {

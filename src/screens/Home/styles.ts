@@ -13,13 +13,13 @@ export const styles = StyleSheet.create({
     marginTop: getStatusBarHeight() + 26,
     marginBottom: 22,
   },
-  content:{
-    marginTop: 42,
-    
+  content: {
+    flex: 1,
+    width: "100%",
+    marginTop: 42,    
   },
   matches: {
     marginTop: 24,
-    marginLeft: 24,
-  }
+    marginLeft: 24,    
+  },
 });
-
