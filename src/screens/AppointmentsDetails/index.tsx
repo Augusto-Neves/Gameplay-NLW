@@ -39,7 +39,7 @@ export default function AppointmentDetails() {
     },
   ];
   return (
-    <Background>
+    <>
       <Header
         title="Detalhes"
         action={
@@ -48,27 +48,30 @@ export default function AppointmentDetails() {
           </TouchableOpacity>
         }
       />
-      <ImageBackground source={Banner} style={styles.banner}>
-        <View style={styles.bannerContent}>
-          <Text style={styles.title}>League of Legends</Text>
-          <Text style={styles.subtitle}>
-            É hoje que vamos chegar ao challenger sem perder uma partida da md10
-          </Text>
+
+      <Background>
+        <ImageBackground source={Banner} style={styles.banner}>
+          <View style={styles.bannerContent}>
+            <Text style={styles.title}>League of Legends</Text>
+            <Text style={styles.subtitle}>
+              É hoje que vamos chegar ao challenger sem perder uma partida da
+              md10
+            </Text>
+          </View>
+        </ImageBackground>
+        <ListHeader title="Jogadores" subtitle="Total 3" />
+
+        <FlatList
+          style={styles.memberList}
+          data={members}
+          keyExtractor={(item) => String(item.id)}
+          renderItem={({ item }) => <Member data={item} />}
+          ItemSeparatorComponent={() => <ListDivider />}
+        />
+        <View style={styles.footer}>
+          <ButtonIcon title="Entrar na partida" activeOpacity={0.7} />
         </View>
-      </ImageBackground>
-
-      <ListHeader title="Jogadores" subtitle="Total 3" />
-
-      <FlatList
-        style={styles.memberList}
-        data={members}
-        keyExtractor={(item) => String(item.id)}
-        renderItem={({ item }) => <Member data={item} />}
-        ItemSeparatorComponent={() => <ListDivider />}
-      />
-      <View style={styles.footer}>
-        <ButtonIcon title="Entrar na partida" activeOpacity={0.7} />
-      </View>
-    </Background>
+      </Background>
+    </>
   );
 }

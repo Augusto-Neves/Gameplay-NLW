@@ -4,9 +4,11 @@ import IllustrationImg from "../../assets/illustration.png";
 import ButtonIcon from "../../components/ButtonIcon";
 import { useNavigation, CommonActions } from "@react-navigation/native";
 import Background from "../../components/Background";
+import { useAuth } from "../../hooks/auth";
 
 export default function SignIn() {
   const navigation = useNavigation();
+  const { user } = useAuth();  
 
   function handleSingIn() {
     navigation.dispatch(

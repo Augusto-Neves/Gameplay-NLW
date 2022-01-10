@@ -30,7 +30,7 @@ export default function Header({ title, action }: Props) {
 
       <Text style={styles.title}>{title}</Text>
 
-      {action && <View>{action}</View>}
+      {action ? <View>{action}</View> : <View style={{ width: 24 }}></View>}
     </LinearGradient>
   );
 }

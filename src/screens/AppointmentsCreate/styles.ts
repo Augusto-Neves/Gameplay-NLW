@@ -47,6 +47,7 @@ export const styles = StyleSheet.create({
   field: {
     width: "100%",
     flexDirection: "row",
+    alignItems: "center",
     justifyContent: "space-between",
   },
   column: {
@@ -58,5 +59,16 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: theme.fonts.text500,
     color: theme.colors.heading,
+  },
+  textMax: {
+    fontFamily: theme.fonts.text400,
+    fontSize: 13,
+    color: theme.colors.highlight,
+    marginTop: 36,
+    marginBottom: 18,
+  },
+  footer: {
+    marginVertical: 20,
+    marginBottom: 56,
   },
 });
