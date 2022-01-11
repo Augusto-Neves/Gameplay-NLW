@@ -24,9 +24,9 @@ export default function Member({ data }: Props) {
     if (status === "online") {
       return on;
     } else if (status === "offline") {
-      return others;
-    } else if (status === "indisponível") {
       return primary;
+    } else if (status === "indisponível") {
+      return others;
     }
   };
   return (
