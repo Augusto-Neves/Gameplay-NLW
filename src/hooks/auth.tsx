@@ -4,8 +4,8 @@ import {
   clientId,
   redirectUri,
   scope,
-  cdnImage,
   responseType,
+  cdnImage,
 } from "../configs";
 import { api } from "../services/api";
 
@@ -20,10 +20,19 @@ type User = {
 
 type AuthContextData = {
   user: User;
+  loading: boolean;
+  signIn: () => Promise<void>;
 };
 
 type AuthProviderProps = {
   children: ReactNode;
+};
+
+type AuthorizationResponse = AuthSession.AuthSessionResult & {
+  params: {
+    access_token?: string;
+    error?: string;
+  };
 };
 
 export const AuthContext = createContext({} as AuthContextData);
@@ -32,18 +41,47 @@ function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>({} as User);
   const [loading, setLoading] = useState(false);
 
-  const signIn = async () => {
+  async function signIn() {
     try {
-      const authUrl = `${api.defaults.baseURL}/oauth2/authorize?client_id=${clientId}&redirect_uri=${clientId}&response_type=${responseType}&scope=${scope}`;
       setLoading(true);
-      AuthSession.startAsync({ authUrl: authUrl });
-    } catch (error) {}
-  };
+
+      const authUrl = `${api.defaults.baseURL}/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
+
+      const { type, params } = (await AuthSession.startAsync({
+        authUrl,
+      })) as AuthorizationResponse;
+
+      if (type === "success" && !params.error) {
+        console.log("types: ", type, "params: ", params);
+        const { access_token } = params;
+
+        const { data } = await api.get<User>("/user/@me", {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        });
+        const firstName = data.username.split(" ")[0];
+        data.avatar = `${cdnImage}/avatars/${data.id}/${data.avatar}.png`;
+
+        setUser({
+          ...data,
+          firstName,
+          token: data.token,
+        });
+        setLoading(false);
+      }
+    } catch {
+      setLoading(false);
+      throw new Error("Erro ao fazer login");
+    }
+  }
 
   return (
     <AuthContext.Provider
       value={{
         user,
+        signIn,
+        loading,
       }}
     >
       {children}
@@ -52,8 +90,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 }
 
 function useAuth() {
-  const context = useContext(AuthContext);
-  return context;
+  return useContext(AuthContext);
 }
 
 export { AuthProvider, useAuth };

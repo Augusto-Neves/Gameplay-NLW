@@ -1,6 +1,7 @@
-const REDIRECT_URI = "https%3A%2F%2Fauth.expo.io%2Fgameplay";
+const REDIRECT_URI =
+  "https://auth.expo.io/@anonymous/gameplay-c2f9c602-8ae9-4d21-a656-3afdf5e9b380";
 const SCOPE = "identify%20email%20connections%20guilds";
-const RESPONSE_TYPE = "token";
+const RESPONSE_TYPE = "token"; //token
 const CLIENT_ID = "930187212010709042";
 const CDN_IMAGE = "htpps://cdn.discordapp.com";
 
