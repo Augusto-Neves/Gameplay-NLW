@@ -6,7 +6,7 @@ import Home from "../screens/Home";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
-export function AuthRoutes() {
+export function AppRoutes() {
   const options = {
     headerShown: false,
     contentStyle: { backgroundColor: theme.colors.secondary100 },

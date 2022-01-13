@@ -66,7 +66,7 @@ export default function AppointmentCreate() {
             <TouchableOpacity activeOpacity={0.7} onPress={handleOpenModalView}>
               <View style={styles.select}>
                 {guild.icon ? (
-                  <GuildIcon icon={guild.icon} />
+                  <GuildIcon iconId={guild.icon} guildId={guild.id} />
                 ) : (
                   <View style={styles.image} />
                 )}

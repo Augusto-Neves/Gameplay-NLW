@@ -5,7 +5,7 @@ import { Feather } from "@expo/vector-icons";
 import { theme } from "../../global/styles/theme";
 
 export type GuildProps = {
-  id: number;
+  id: string;
   name: string;
   icon: string | undefined;
   owner: boolean;
@@ -22,7 +22,7 @@ export default function Guild({ onPress, data }: Props) {
       activeOpacity={0.7}
       onPress={onPress}
     >
-      <GuildIcon icon={data.icon} />
+      <GuildIcon iconId={data.icon} guildId={data.id} />
       <View style={styles.content}>
         <View>
           <Text style={styles.name}>{data.name}</Text>

@@ -1,22 +1,21 @@
 {
   "expo": {
     "name": "gameplay",
-    "slug": "gameplay",
+    "slug": "gameplay-nlw-heat",
+    "owner": "auguto_neves",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "scheme": "gameplay",
+    "scheme": "gameplay-nlw-heat",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#0E1647"
+      "backgroundColor": "#0D133D"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -28,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/Augusto-Neves/Gameplay-NLW"
   }
 }

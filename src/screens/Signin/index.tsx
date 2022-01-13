@@ -13,7 +13,7 @@ export default function SignIn() {
     try {
       await signIn();
     } catch {
-      Alert.alert("Erro", "Erro ao fazer login, tente novamente");
+      Alert.alert("Erro", "Tente novamente");
     }
   }
 
