@@ -11,7 +11,7 @@ import { GuildProps } from "../Guild";
 import { LinearGradient } from "expo-linear-gradient";
 
 export type AppointmentsProps = {
-  id: number;
+  id: string;
   guild: GuildProps;
   category: number;
   date: string;
@@ -32,11 +32,11 @@ export default function Appointments({ data, onPress }: Props) {
           style={styles.guildIconContainer}
           colors={[secondary50, secondary70]}
         >
-          <GuildIcon icon={data.guild.icon} />
+          <GuildIcon iconId={data.guild.icon} guildId={data.guild.id}/>
         </LinearGradient>
         <View style={styles.content}>
           <View style={styles.header}>
-            <Text style={styles.title}>{data.guild.name}</Text>
+            <Text style={styles.title}>{data.guild.name}</Text>            
             <Text style={styles.category}>{category.title}</Text>
           </View>
 

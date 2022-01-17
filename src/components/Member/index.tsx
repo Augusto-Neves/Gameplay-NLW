@@ -17,15 +17,15 @@ type Props = {
 export default function Member({ data }: Props) {
   const { on, primary, others } = theme.colors;
   const isOnline = data.status === "online";
-  const isOffline = data.status === "offline";
-  const isBusy = data.status === "indisponível";
+  const isOffline = data.status === "dnd";
+  const isBusy = data.status === "idle";
 
   const backgroundBulletColor = (status: string) => {
     if (status === "online") {
       return on;
-    } else if (status === "offline") {
+    } else if (status === "dnd") {
       return primary;
-    } else if (status === "indisponível") {
+    } else if (status === "idle") {
       return others;
     }
   };

@@ -5,6 +5,7 @@ import { theme } from "../../global/styles/theme";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
   },
   banner: {
     width: "100%",
@@ -26,7 +27,7 @@ export const styles = StyleSheet.create({
     fontFamily: theme.fonts.text400,
     fontSize: 13,
     color: theme.colors.heading,
-  },
+  },  
   memberList: {
     marginTop: 27,
     marginLeft: 24,

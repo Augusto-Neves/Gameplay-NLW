@@ -15,11 +15,12 @@ export const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    justifyContent: "center",    
     width: "100%",
-    marginTop: 42,    
+    marginTop: 42,
   },
   matches: {
     marginTop: 24,
-    marginLeft: 24,    
+    marginLeft: 24,
   },
 });

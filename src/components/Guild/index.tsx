@@ -7,7 +7,7 @@ import { theme } from "../../global/styles/theme";
 export type GuildProps = {
   id: string;
   name: string;
-  icon: string | undefined;
+  icon: string;
   owner: boolean;
 };
 
