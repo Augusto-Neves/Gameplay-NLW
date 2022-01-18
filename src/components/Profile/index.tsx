@@ -4,17 +4,16 @@ import Avatar from "../Avatar";
 
 import { styles } from "./styles";
 
-export function Profile() {
-  const { user, signOut } = useAuth();
-  const handleSignOut = () => {
-    Alert.alert("Logout", "Deseja realmente sair?", [
-      { text: "Não", style: "cancel" },
-      { text: "Sim", onPress: () => signOut() },
-    ]);
-  };
+type Props = {
+  onPress?: () => void;
+};
+
+export function Profile({ onPress }: Props) {
+  const { user } = useAuth();
+  
   return (
     <View style={styles.container}>
-      <TouchableOpacity activeOpacity={0.7} onPress={handleSignOut}>
+      <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
         <Avatar urlImage={user.avatar} />
       </TouchableOpacity>
       <View>

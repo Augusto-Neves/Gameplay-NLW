@@ -5,7 +5,7 @@ import {
 } from "@react-navigation/native";
 import { useState, useCallback } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { FlatList, View } from "react-native";
+import { FlatList, View, Text, TouchableOpacity } from "react-native";
 import Appointments, { AppointmentsProps } from "../../components/Appointments";
 import Background from "../../components/Background";
 import ButtonAdd from "../../components/ButtonAdd";
@@ -16,12 +16,23 @@ import { Profile } from "../../components/Profile";
 import { styles } from "./styles";
 import { COLLECTION_APPOINTMENT } from "../../configs/database";
 import Loading from "../../components/Loading";
+import SignOutModal from "../../components/SignoutModal";
+import { useAuth } from "../../hooks/auth";
 
 export default function Home() {
+  const { signOut } = useAuth();
   const [category, setCategory] = useState(0);
   const navigation = useNavigation();
   const [loading, setLoading] = useState(true);
   const [appointments, setAppointments] = useState<AppointmentsProps[]>([]);
+  const [openModalView, setOpenModalView] = useState(false);
+
+  function handleOpenModalView() {
+    setOpenModalView(true);
+  }
+  function handleCloseModalView() {
+    setOpenModalView(false);
+  }
 
   function handleCategorySelected(categoryId: number) {
     return categoryId === category ? setCategory(0) : setCategory(categoryId);
@@ -65,7 +76,7 @@ export default function Home() {
     <Background>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Profile />
+          <Profile onPress={handleOpenModalView} />
           <ButtonAdd activeOpacity={0.7} onPress={handleAppointmentsCreate} />
         </View>
 
@@ -100,6 +111,30 @@ export default function Home() {
             </>
           )}
         </View>
+        <SignOutModal visible={openModalView} onPress={handleCloseModalView}>
+          <View style={styles.signOutConteiner}>
+            <Text style={styles.signOutText}>Deseja sair do</Text>
+            <Text style={styles.logoWhite}>Game</Text>
+            <Text style={styles.logoRed}>Play</Text>
+            <Text style={styles.interrogation}>?</Text>
+          </View>
+          <View style={styles.buttons}>
+            <TouchableOpacity
+              style={styles.denyButton}
+              activeOpacity={0.7}
+              onPress={handleCloseModalView}
+            >
+              <Text style={styles.text}>Não</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.confirmButton}
+              activeOpacity={0.7}
+              onPress={signOut}
+            >
+              <Text style={styles.text}>Sim</Text>
+            </TouchableOpacity>
+          </View>
+        </SignOutModal>
       </View>
     </Background>
   );
