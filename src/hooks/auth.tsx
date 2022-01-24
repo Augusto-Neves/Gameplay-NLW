@@ -41,7 +41,7 @@ export const AuthContext = createContext({} as AuthContextData);
 
 const { CLIENT_ID } = process.env;
 const { CDN_IMAGE } = process.env;
-const { REDIRECT_URI } = process.env;
+const { REDIRECT_URI_DEVELOPMENT } = process.env;
 const { RESPONSE_TYPE } = process.env;
 const { SCOPE } = process.env;
 
@@ -52,7 +52,7 @@ function AuthProvider({ children }: AuthProviderProps) {
   async function signIn() {
     try {
       setLoading(true);
-      const authUrl = `${api.defaults.baseURL}/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
+      const authUrl = `${api.defaults.baseURL}/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI_DEVELOPMENT}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
 
       const { type, params } = (await AuthSession.startAsync({
         authUrl,
